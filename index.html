@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <video id="vid" autoplay></video>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io('http://localhost:3000');
+      socket.on('a', data => {
+        console.log(data)
+      })
+      navigator.mediaDevices.getUserMedia({
+        video: true
+      })
+      .then(res => {
+        document.getElementById('vid').srcObject = res;
+      });
+    </script>
+  </body>
+</html>
